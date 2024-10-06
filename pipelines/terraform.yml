@@ -7,7 +7,7 @@ pipelines:
     display_order: -1
     materials:
       git-3a51435:
-        git: https://github.com/saiyadaz/tools-automation-code.git
+        git: https://github.com/saiyadaz/tools-automatmation-code.git
         shallow_clone: false
         auto_update: true
         branch: main
