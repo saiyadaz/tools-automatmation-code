@@ -16,7 +16,7 @@ resource "aws_route53_record" "record" {
   ttl     = 3
 
 }
-resource "aws_iam_role" "test_role" {
+resource "aws_iam_role" "role" {
   name = "${var.tool_name}-role"
 
   # Terraform's "jsonencode" function converts a
@@ -38,4 +38,8 @@ resource "aws_iam_role" "test_role" {
   tags = {
     tag-key = "${var.tool_name}-role"
   }
+}
+resource "aws_iam_instance_profile" "instance_profile" {
+  name = "${var.tool_name}-role"
+  role = aws_iam_role.role.name
 }
