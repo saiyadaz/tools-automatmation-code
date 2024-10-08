@@ -1,4 +1,4 @@
-- name: Setup a given tool
+- name: Setup a Given Tool
   hosts: all
   become: yes
   roles:
