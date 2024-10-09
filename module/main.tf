@@ -27,6 +27,11 @@ resource "aws_route53_record" "record-internal" {
   ttl     = 30  #this internal record is for private ip#
 }
 
+resource "aws_iam_role_policies_exclusive" "example" {
+  role_name    ="${var.tool_name}-role"
+  policy_names = ["${var.tool_name}-inline-policy"]
+}
+
 
 resource "aws_iam_role" "role" {
   name = "${var.tool_name}-role"
