@@ -33,8 +33,8 @@ resource "aws_iam_role_policies_exclusive" "example" {
 }
 
 
-resource "aws_iam_role" "role" {
-  name = "${var.tool_name}-role"
+#resource "aws_iam_role" "role" {
+  #name = "${var.tool_name}-role"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
