@@ -27,14 +27,13 @@ resource "aws_route53_record" "record-internal" {
   ttl     = 30  #this internal record is for private ip#
 }
 
-resource "aws_iam_role_policies_exclusive" "example" {
-  role_name    ="${var.tool_name}-role"
-  policy_names = ["${var.tool_name}-inline-policy"]
-}
+######role_name    ="${var.tool_name}-role"
+ ### policy_names = ["${var.tool_name}-inline-policy"]
+##}
 
 
-#resource "aws_iam_role" "role" {
-  #name = "${var.tool_name}-role"
+resource "aws_iam_role" "role" {
+  name = "${var.tool_name}-role"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -70,7 +69,10 @@ resource "aws_iam_role_policies_exclusive" "example" {
     tag-key = "${var.tool_name}-role"
   }
 }
+
+
 resource "aws_iam_instance_profile" "instance_profile" {
   name = "${var.tool_name}-role"
   role = aws_iam_role.role.name
+
 }
