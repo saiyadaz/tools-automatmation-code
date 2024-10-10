@@ -27,16 +27,10 @@ resource "aws_route53_record" "record-internal" {
   ttl     = 30  #this internal record is for private ip#
 }
 
-######role_name    ="${var.tool_name}-role"
- ### policy_names = ["${var.tool_name}-inline-policy"]
-##}
-
-
 resource "aws_iam_role" "role" {
   name = "${var.tool_name}-role"
 
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
+
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -46,8 +40,8 @@ resource "aws_iam_role" "role" {
         Sid    = ""
         Principal = {
           Service = "ec2.amazonaws.com"
-        }
-      },
+       }
+     },
     ]
   })
   inline_policy {
@@ -57,13 +51,13 @@ resource "aws_iam_role" "role" {
       Version = "2012-10-17"
       Statement = [
         {
-          Action   = var.policy_resource_list
+         Action   = concat(var.dummy_policy, var.policy_resource_list)
           Effect   = "Allow"
           Resource = "*"
         },
       ]
     })
-  }
+ }
 
   tags = {
     tag-key = "${var.tool_name}-role"
