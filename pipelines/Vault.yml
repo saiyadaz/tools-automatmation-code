@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  Vault:
+  vault:
     group: Tools
     label_template: ${COUNT}
     lock_behavior: none
@@ -20,5 +20,5 @@ pipelines:
           jobs:
             ansible:
               tasks:
-                - exec: {command: ansible-playbook, arguments: [ "-i", "Vault-internal.devopssz14.online,", "tools.yml", "-e", "tool_name=Vault", "-e", "ansible_user=ec2-user", "-e",
+                - exec: {command: ansible-playbook, arguments: [ "-i", "vault-internal.devopssz14.online,", "tools.yml", "-e", "tool_name=vault", "-e", "ansible_user=ec2-user", "-e",
                                                                  "ansible_password=DevOps321" ], run_if: passed}

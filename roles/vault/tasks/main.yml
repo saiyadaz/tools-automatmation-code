@@ -1,14 +1,14 @@
-- name: Install Vault Yum Repo file
+- name: Install vault Yum Repo file
   ansible.builtin.shell: yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
 
-- name: Install Vault
+- name: Install vault
   ansible.builtin.dnf:
-    name: Vault
+    name: vault
     state: installed
 
-- name: Start Vault Service
+- name: Start vault Service
   ansible.builtin.systemd_service:
-    name: Vault
+    name: vault
     state: started
     enabled: true
 
