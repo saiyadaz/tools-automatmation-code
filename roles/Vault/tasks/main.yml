@@ -10,5 +10,5 @@
   ansible.builtin.systemd_service:
     name: Vault
     state: started
-    enables: true
+    enabled: true
 
