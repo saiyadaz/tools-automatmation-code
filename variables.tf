@@ -10,9 +10,9 @@ variable "tools" {
       policy_resource_list = []
   }
 
-    vault = {
-      instance_type        = "t3.small"
-      policy_resource_list = []
+    #vault = {
+     # instance_type        = "t3.small"
+     # policy_resource_list = []
 
     }
   }
