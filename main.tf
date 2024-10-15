@@ -11,10 +11,5 @@ module "tools" {
 
   zone_id              = var.zone_id
 }
-#variable "tools" {
-#default = {
-  #prometheus = {
-   # instance_type = "t3.micro"
-  #}
-#}
-#}
+
+
