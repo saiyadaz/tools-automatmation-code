@@ -1,6 +1,4 @@
-variable "zone_id" {
-  default = ""
-}
+
 module "tools" {
   for_each = var.tools
   source   = "./module"
