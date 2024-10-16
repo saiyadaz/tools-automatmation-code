@@ -14,7 +14,21 @@
       - jenkins
     state: installed
 
+- name: Create init directory
+  ansible.builtin.file:
+    path: /var/lib/jenkins/init.groovy.d
+
+- name: Copy init scripts
+  ansible.builtin.template:
+    src: "{{item}}.groovy"
+    dest: /var/lib/jenkins/init.groovy.d/{{item}}.groovy
+  loop:
+    - 01-wizard
+    - 02-admin-user
+    - 03-plugins
+
 - name: Start Jenkins Service
   ansible.builtin.systemd_service:
     name: jenkins
     state: restarted
+    enabled: yes
