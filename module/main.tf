@@ -9,6 +9,12 @@ resource "aws_instance" "instance" {
 
  }
 }
+lifecycle {
+  ignore_changes = [
+    ami,
+  ]
+
+}
 
 resource "aws_route53_record" "record" {
   name    = var.tool_name
