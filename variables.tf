@@ -14,7 +14,7 @@ variable "tools" {
       #policy_resource_list = []
     }
   }
-}
+
 
 
  variable "zone_id" {
