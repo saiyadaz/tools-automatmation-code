@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-vault:
+ vault:
   group: Tools
   label_template: ${COUNT}
   lock_behavior: none
