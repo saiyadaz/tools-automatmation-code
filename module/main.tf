@@ -4,18 +4,26 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = [data.aws_security_group.selected.id]
   iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
 
- tags = {
-   Name    = var.tool_name
+ #instance_market_options {
+    #market_type = "spot"
 
- }
-}
+   #spot_options {
+      #instance_interruption_behavior = "stop"
+     # spot_instance_type             = "persistent"
+  #  }
 
 
-     lifecycle {
-     ignore_changes = [
-    ami,
+  tags = {
+    Name = var.tool_name
+  }
+
+  lifecycle {
+    ignore_changes = [
+      ami,
   ]
 
+
+  }
 }
 
 resource "aws_route53_record" "record" {
