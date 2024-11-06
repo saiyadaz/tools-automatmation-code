@@ -1,0 +1,24 @@
+format_version: 10
+pipelines:
+  jenkins:
+    group: Tools
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-3a51435:
+        git: https://github.com/saiyadaz/tools-automatmation-code.git
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - Ansible:
+          fetch_materials: true
+          approval:
+            type: manual
+          allow_only_on_success: false
+          jobs:
+            ansible:
+              tasks:
+                - exec: {command: ansible-playbook, arguments: [ "-i", "jenkins-internal.devopssz14.online,", "tools.yml", "-e", "tool_name=Jenkins", "-e", "ansible_user=ec2-user", "-e",
+                                                                 "ansible_password=DevOps321", "-e", "jenkins_jobs=true"], run_if: passed}
