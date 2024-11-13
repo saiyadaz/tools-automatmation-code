@@ -1,5 +1,10 @@
 - name: Set Prompt
   ansible.builtin.shell: set-prompt jenkins
+  
+- name: Copy Jenkins repo file
+  ansible.builtin.template:
+    src: jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
 
 - name: Install Java & Jenkins
   ansible.builtin.dnf:
