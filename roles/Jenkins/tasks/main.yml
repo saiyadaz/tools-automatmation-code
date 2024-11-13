@@ -1,0 +1,17 @@
+- name: Set Prompt
+  ansible.builtin.shell: set-prompt jenkins
+
+- name: Install Java & Jenkins
+  ansible.builtin.dnf:
+    name:
+      - java-17-openjdk
+      - fontconfig
+      - jenkins
+    state: installed
+
+
+- name: Start Jenkins Service
+  ansible.builtin.systemd_service:
+    name: jenkins
+    state: restarted
+
