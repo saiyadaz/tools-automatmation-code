@@ -5,13 +5,13 @@
 
 - name: Create Job xml file
   ansible.builtin.template:
-    src: jobs/mbranch.xml
+    src: jobs/pipeline.xml
     dest: /tmp/{{item}}.xml
   loop:
     - frontend
     - backend
   delegate_to: localhost
-  
+
 
 - name: Create Jobs
   community.general.jenkins_job:
