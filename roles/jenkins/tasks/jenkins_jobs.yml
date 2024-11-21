@@ -9,12 +9,7 @@
     dest: /tmp/{{item}}.xml
   loop:
     - frontend
-    - cart
-    - catalogue
-    - user
-    - shipping
-    - payment
-    - dispatch
+    - backend
   delegate_to: localhost
   become: false
 
@@ -27,11 +22,5 @@
     user: "{{secrets.jenkins_user}}"
   loop:
     - frontend
-    - cart
-    - catalogue
-    - user
-    - shipping
-    - payment
-    - dispatch
-
+    - backend
 
