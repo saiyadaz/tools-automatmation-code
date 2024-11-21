@@ -1,22 +1,15 @@
-- name: Set Prompt
-  ansible.builtin.shell: set-prompt jenkins
-  
-- name: Copy Jenkins repo file
-  ansible.builtin.template:
-    src: jenkins.repo
-    dest: /etc/yum.repos.d/jenkins.repo
+- name: Jenkins Setup
+  ansible.builtin.include_tasks:
+    file: jenkins-setup.yml
+  when: jenkins_setup | bool
 
-- name: Install Java & Jenkins
-  ansible.builtin.dnf:
-    name:
-      - java-17-openjdk
-      - fontconfig
-      - jenkins
-    state: installed
+- name: Jenkins Setup
+  ansible.builtin.include_tasks:
+    file: jenkins-jobs.yml
+  when: jenkins_jobs | bool
 
 
-- name: Start Jenkins Service
-  ansible.builtin.systemd_service:
-    name: jenkins
-    state: restarted
+
+
+
 
