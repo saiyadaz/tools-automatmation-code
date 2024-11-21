@@ -1,11 +1,11 @@
 - name: Jenkins Setup
   ansible.builtin.include_tasks:
-    file: jenkins-setup.yml
+    file: jenkins_setup.yml
   when: jenkins_setup | bool
 
 - name: Jenkins Setup
   ansible.builtin.include_tasks:
-    file: jenkins-jobs.yml
+    file: jenkins_jobs.yml
   when: jenkins_jobs | bool
 
 
