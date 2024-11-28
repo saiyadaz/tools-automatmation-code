@@ -21,6 +21,7 @@
   ansible.builtin.shell: ./svc.sh uninstall
   args:
     chdir: /home/ec2-user/github-runner
+  ignore_errors: true
 
 - name: Install Runner
   ansible.builtin.shell: ./config.sh remove --token {{secrets.GITHUB_RUNNER_TOKEN}}; ./config.sh --unattended --replace --url https://github.com/saiyadazDevops --token {{secrets.GITHUB_RUNNER_TOKEN}}
