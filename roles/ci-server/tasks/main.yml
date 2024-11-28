@@ -31,7 +31,7 @@
 - name: Start Runner
   ansible.builtin.shell: ./svc.sh install; ./svc.sh start
   args:
-  chdir: /home/ec2-user/github-runner
+   chdir: /home/ec2-user/github-runner
 
 - name: Disable default NodeJS Version Module
   ansible.builtin.shell: dnf module disable nodejs -y
