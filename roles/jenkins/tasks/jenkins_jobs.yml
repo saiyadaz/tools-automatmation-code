@@ -1,7 +1,7 @@
 - name: Install python-jenkins
   ansible.builtin.pip:
     name: python-jenkins
-    executable: pip3.9
+    executable: pip3.11
 
 - name: Create Job xml file
   ansible.builtin.template:
